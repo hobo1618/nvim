@@ -63,6 +63,9 @@ use {
     end
 }
 
+use 'm4xshen/autoclose.nvim'
+
+
 
 -- use {
 --   "pmizio/typescript-tools.nvim",

@@ -1,3 +1,4 @@
+
 local config = {
    keys = {
       ["("] = { escape = false, close = true, pair = "()" },

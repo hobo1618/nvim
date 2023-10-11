@@ -47,6 +47,23 @@ use {
 	}
 }
 
+use {
+  "zbirenbaum/copilot.lua",
+  cmd = "Copilot",
+  event = "InsertEnter",
+  config = function()
+    require("copilot").setup({})
+  end,
+}
+
+use {
+    'numToStr/Comment.nvim',
+    config = function()
+        require('Comment').setup()
+    end
+}
+
+
 -- use {
 --   "pmizio/typescript-tools.nvim",
 --   requires = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },

@@ -17,6 +17,12 @@ vim.keymap.set("n", "<leader>svwm", function()
     require("vim-with-me").StopVimWithMe()
 end)
 
+
+-- nvim-tree
+vim.keymap.set("n", "<C-n>", "<cmd> NvimTreeToggle ~ <CR>")
+vim.keymap.set("n", "<leader>r", "<cmd> NvimTreeRefresh <CR>")
+
+
 -- greatest remap ever
 vim.keymap.set("x", "<leader>p", [["_dP]])
 

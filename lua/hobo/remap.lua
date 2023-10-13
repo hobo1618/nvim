@@ -19,7 +19,7 @@ end)
 
 
 -- nvim-tree
-vim.keymap.set("n", "<C-n>", "<cmd> NvimTreeToggle ~ <CR>")
+vim.keymap.set("n", "<C-n>", "<cmd> NvimTreeToggle <CR>")
 vim.keymap.set("n", "<leader>r", "<cmd> NvimTreeRefresh <CR>")
 
 

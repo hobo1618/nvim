@@ -83,4 +83,6 @@ return require('packer').startup(function(use)
         },
     }
 
+    use 'nvim-pack/nvim-spectre'
+
 end)

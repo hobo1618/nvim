@@ -9,7 +9,7 @@ require 'nvim-treesitter.configs'.setup {
     -- Recommendation: set to false if you don't have `tree-sitter` CLI installed locally
     auto_install = true,
 
-    vim.treesitter.language.register('markdown', 'mdx'), -- the someft filetype will use the python parser and queries.
+    vim.treesitter.language.register('markdown', 'mdx', 'astro'), -- the someft filetype will use the python parser and queries.
 
     highlight = {
         enable = true,

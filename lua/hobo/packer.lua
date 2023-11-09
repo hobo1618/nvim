@@ -85,4 +85,16 @@ return require('packer').startup(function(use)
 
     use 'nvim-pack/nvim-spectre'
 
+    use 'neovim/nvim-lspconfig'
+    use 'simrat39/rust-tools.nvim'
+    use {
+        'saecki/crates.nvim',
+        tag = 'v0.4.0',
+        dependencies = { 'nvim-lua/plenary.nvim' },
+        config = function()
+            require('crates').setup()
+        end,
+    }
+    -- Debugging
+    use 'mfussenegger/nvim-dap'
 end)

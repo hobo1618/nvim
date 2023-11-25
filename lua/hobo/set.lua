@@ -31,6 +31,13 @@ vim.opt.updatetime = 50
 
 vim.opt.colorcolumn = "80"
 
+-- https://neovim.io/doc/user/fold.html#fold-commands
+-- confusing because this is expr mode and I don't 
+-- really get it
+-- this works for me for now:
+-- zM --> closes all folds (do this first to "set" folds?)
+-- zR --> opens all folds
+-- za --> toggle fold
 vim.opt.foldmethod = "expr"
 vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
 vim.cmd([[ set nofoldenable]])

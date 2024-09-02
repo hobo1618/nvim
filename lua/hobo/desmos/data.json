@@ -1,0 +1,42 @@
+{
+    "version": 11,
+    "randomSeed": "63a50bd8eea0536e7891b9380b1476f1",
+    "graph": {
+        "viewport": {
+            "xmin": -10,
+            "ymin": -14.930092602356503,
+            "xmax": 10,
+            "ymax": 14.930092602356503
+        }
+    },
+    "expressions": {
+        "list": [
+            {
+                "type": "expression",
+                "id": "2",
+                "color": "#2d70b3",
+                "latex": "y=mx+d"
+            },
+            {
+                "type": "expression",
+                "id": "3",
+                "color": "#c74440",
+                "latex": "m=1",
+                "hidden": true
+            },
+            {
+                "type": "expression",
+                "id": "4",
+                "color": "#2d70b3",
+                "latex": "d=1",
+                "hidden": true
+            },
+            {
+                "type": "expression",
+                "id": "5",
+                "color": "#388c46"
+            }
+        ]
+    },
+    "includeFunctionParametersInRandomSeed": true
+}

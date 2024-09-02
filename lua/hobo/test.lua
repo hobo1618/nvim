@@ -1,0 +1,226 @@
+-- local cfid = os.getenv("TD_CFID")
+-- local cftoken = os.getenv("TD_CFTOKEN")
+-- local jsessionid = os.getenv("TD_JSESSIONID")
+-- local pwd = os.getenv("TD_PASSWORD")
+-- local username = os.getenv("TD_USERNAME")
+--
+-- -- Function to get the text from the current buffer
+-- local function get_buffer_text()
+--     local bufnr = vim.api.nvim_get_current_buf()
+--     local lines = vim.api.nvim_buf_get_lines(bufnr, 0, -1, false)
+--     return table.concat(lines, "\n")
+-- end
+--
+-- -- Import the http module
+-- local http_request = require("http.request")
+-- local http_cookies = require("http.cookie")
+--
+-- local add_url = "https://td.bespokeeducation.fr/tutordome/billing/add_edit-process.cfm"
+--
+-- -- Function to get the multipart form data
+-- local function get_multipart_form_data_add()
+--     local boundary = "----WebKitFormBoundary1KfbYiN3zy8E0Pz0"
+--     local body = table.concat({
+--         "--" .. boundary,
+--         'Content-Disposition: form-data; name="billingPeriod_id"',
+--         '',
+--         '798',
+--         "--" .. boundary,
+--         'Content-Disposition: form-data; name="billing_action"',
+--         '',
+--         'add',
+--         "--" .. boundary,
+--         'Content-Disposition: form-data; name="billing_type"',
+--         '',
+--         '1',
+--         "--" .. boundary,
+--         'Content-Disposition: form-data; name="category"',
+--         '',
+--         '1',
+--         "--" .. boundary,
+--         'Content-Disposition: form-data; name="student_id"',
+--         '',
+--         '28041',
+--         "--" .. boundary,
+--         'Content-Disposition: form-data; name="time"',
+--         '',
+--         '2.0',
+--         "--" .. boundary,
+--         'Content-Disposition: form-data; name="location"',
+--         '',
+--         '7',
+--         "--" .. boundary,
+--         'Content-Disposition: form-data; name="entryDate"',
+--         '',
+--         '8/19/24',
+--         "--" .. boundary,
+--         'Content-Disposition: form-data; name="journal_entry"',
+--         '',
+--         "Today we reviewed Alex's mock results from his recent test. Alex's mock scores showed decent improvement in math, although his verbal scores dropped noticeably.",
+--         "--" .. boundary,
+--         'Content-Disposition: form-data; name="office_id"',
+--         '',
+--         '0',
+--         "--" .. boundary,
+--         'Content-Disposition: form-data; name="skype_session"',
+--         '',
+--         '1',
+--         "--" .. boundary .. "--",
+--         ''
+--     }, '\r\n')
+--     return body, boundary
+-- end
+--
+-- -- Function to post the text to the specified URL
+-- local function TestPost()
+--     local body, boundary = get_multipart_form_data_add()
+--
+--     -- Create the HTTP request
+--     local req = http_request.new_from_uri(add_url)
+--
+--     local req_headers = {
+--         ["Content-Type"] = "multipart/form-data; boundary=" .. boundary,
+--         ["Cookie"] =
+--         'CFID=28188; CFTOKEN=a86fdff4a84cac36-600CBF92-021B-26E2-C0C6AA850702620F; JSESSIONID=55C31F7CBD935729F9F08F6FD1C942E5.cfusion; CFAUTHORIZATION_tdFranceApp="NTc5DXRkRnJhbmNlQXBwDTE3MjQxNjM1NjU4ODkNNjNFOTVBMDREOTIzMEYzNA=="'
+--     }
+--
+--     req.headers:upsert(":method", "POST")
+--     req.headers:append("Content-Type", req_headers["Content-Type"])
+--     req.headers:append("Cookie", req_headers["Cookie"])
+--     req:set_body(body)
+--
+--     -- Perform the request
+--     local headers, stream = req:go(10) -- 10 seconds timeout
+--     if not headers then
+--         print("Request failed")
+--         return
+--     end
+--
+--     -- Read the response
+--     local response_body, err = stream:get_body_as_string()
+--     if not response_body then
+--         print("Failed to get body:", err)
+--         return
+--     end
+--
+--     print("Response from td.bespokeeducation.fr:\n", response_body)
+-- end
+--
+-- vim.api.nvim_create_user_command('TestPost', TestPost, {})
+--
+-- -- Function to post the text to httpbin
+-- local function PostLesson()
+--     local text = get_buffer_text()
+--
+--     -- Create the HTTP request
+--     local req = http_request.new_from_uri("https://httpbin.org/post")
+--     req.headers:upsert(":method", "POST")
+--     req.headers:upsert("content-type", "text/plain")
+--     req:set_body(text)
+--
+--     -- Perform the request
+--     local headers, stream = req:go(10) -- 10 seconds timeout
+--     if not headers then
+--         print("Request failed")
+--         return
+--     end
+--
+--     -- Read the response
+--     local body, err = stream:get_body_as_string()
+--     if not body then
+--         print("Failed to get body:", err)
+--         return
+--     end
+--
+--     print("Response from td.tutordome:\n", body)
+-- end
+--
+-- vim.api.nvim_create_user_command('PostLesson', PostLesson, {})
+--
+--
+-- -- Construct the cookie header
+--
+-- -- Function to post the text to httpbin
+-- local function TestAuth()
+--     local cookie_store = http_cookies.new_store()
+--
+--     local cookie_header = "CFID=" .. cfid .. "; CFTOKEN=" .. cftoken .. "; JSESSIONID=" .. jsessionid
+--
+--     -- Define the URL
+--     local url = "https://td.bespokeeducation.fr/tutordome/"
+--
+--     local boundary = "----WebKitFormBoundarybUic6MdsKulhwUlW"
+--     local body = table.concat({
+--         "--" .. boundary,
+--         'Content-Disposition: form-data; name="user_page"',
+--         "",
+--         "/tutordome/index.cfm",
+--         "--" .. boundary,
+--         'Content-Disposition: form-data; name="username"',
+--         "",
+--         "whobden",
+--         "--" .. boundary,
+--         'Content-Disposition: form-data; name="password"',
+--         "",
+--         "Selected4$",
+--         "--" .. boundary .. "--",
+--         ""
+--     }, "\r\n")
+--     -- Define the multipart form data boundary
+--     -- local boundary = "----WebKitFormBoundaryhl2bTA4sfL3Nmtut"
+--     --
+--     -- -- Define the form data as a raw string
+--     -- local body = table.concat({
+--     --     "--" .. boundary,
+--     --     'Content-Disposition: form-data; name="user_page"',
+--     --     "",
+--     --     "/tutordome/index.cfm?msg=776635",
+--     --     "--" .. boundary,
+--     --     'Content-Disposition: form-data; name="username"',
+--     --     "",
+--     --     "whobden",
+--     --     "--" .. boundary,
+--     --     'Content-Disposition: form-data; name="password"',
+--     --     "",
+--     --     "Selected4$",
+--     --     "--" .. boundary .. "--",
+--     --     ""
+--     -- }, "\r\n")
+--
+--     -- Create the HTTP request
+--     local req = http_request.new_from_uri("https://td.bespokeeducation.fr/tutordome/")
+--     req.headers:upsert(":method", "POST")
+--     req.headers:append("Content-Type", "multipart/form-data; boundary=" .. boundary)
+--     req.headers:append("Cookie", cookie_header)
+--     req:set_body(body)
+--     req.follow_redirects = false
+--     -- req.follow_redirects(false)
+--
+--     -- Send the request and get the response
+--     local headers, stream = assert(req:go())
+--
+--     local set_cookie = headers:get('set-cookie')
+--
+--     -- if set_cookie then
+--     --     cookie_store:store_cookies_from_headers(headers, "https://td.bespokeeducation.fr")
+--     -- end
+--
+--
+--     -- Store cookies from the redirect response
+--     cookie_store:store_from_request(req.headers, headers, nil, "https://td.bespokeeducation.fr")
+--     -- print(set_cookie)
+--
+--     local file = io.open("cookies.txt", "w")
+--     local success, err = cookie_store:save_to_file(file)
+--     if success then
+--         print("Cookies successfully saved to file.")
+--     else
+--         print("Failed to save cookies: ", err)
+--     end
+--     if file then
+--         file:close()
+--     end
+--
+-- end
+--
+-- vim.api.nvim_create_user_command('TestAuth', TestAuth, {})

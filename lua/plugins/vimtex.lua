@@ -8,5 +8,8 @@ return {
     vim.g.vimtex_compiler_latexmk = {
       continuous = 1,
     }
+    vim.keymap.set("n", "<localleader>lp", function()
+      require("config.latex").preview_snippet()
+    end, { desc = "Preview LaTeX Snippet" })
   end,
 }

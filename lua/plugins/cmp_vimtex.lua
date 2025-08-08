@@ -1,0 +1,16 @@
+-- return {
+--   "micangl/cmp-vimtex",
+--   ft = "tex",
+--   dependencies = { "hrsh7th/nvim-cmp" }, -- makes sure cmp is ready
+--   config = function()
+--     local cmp = require("cmp")
+--     require("cmp_vimtex").setup()
+--     cmp.setup.filetype("tex", {
+--       sources = cmp.config.sources({
+--         { name = "vimtex" },
+--         { name = "buffer" },
+--         { name = "path" },
+--       }),
+--     })
+--   end,
+-- }

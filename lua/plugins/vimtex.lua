@@ -1,15 +1,17 @@
-return {
-  "lervag/vimtex",
-  lazy = false, -- we don't want to lazy load VimTeX
-  -- tag = "v2.15", -- uncomment to pin to a specific release
-  init = function()
-    -- VimTeX configuration goes here, e.g.
-    vim.g.vimtex_view_method = "zathura"
-    vim.g.vimtex_compiler_latexmk = {
-      continuous = 1,
-    }
-    vim.keymap.set("n", "<localleader>lp", function()
-      require("config.latex").preview_snippet()
-    end, { desc = "Preview LaTeX Snippet" })
-  end,
-}
+-- return {
+--   "lervag/vimtex",
+--   lazy = false, -- we don't want to lazy load VimTeX
+--   enable = false,
+--   -- tag = "v2.15", -- uncomment to pin to a specific release
+--   init = function()
+--     -- VimTeX configuration goes here, e.g.
+--     vim.g.vimtex_view_method = "zathura"
+--     vim.g.vimtex_complete_enabled = 0
+--     vim.g.vimtex_compiler_latexmk = {
+--       continuous = 1,
+--     }
+--     vim.keymap.set("n", "<localleader>lp", function()
+--       require("config.latex").preview_snippet()
+--     end, { desc = "Preview LaTeX Snippet" })
+--   end,
+-- }
